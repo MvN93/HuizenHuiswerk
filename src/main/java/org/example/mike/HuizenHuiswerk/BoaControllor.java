@@ -7,4 +7,6 @@ public class BoaControllor {
     {
         maxCapaciteitHuis = 6;
     }
+
+
 }
