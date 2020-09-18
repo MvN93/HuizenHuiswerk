@@ -4,6 +4,13 @@ public class Persoon {
     private String naam;
     private int leeftijd;
 
+
+    Persoon(String naam, int leeftijd)
+    {
+        this.naam = naam;
+        this.leeftijd = leeftijd;
+    }
+
     String getNaam()
     {
         return naam;
