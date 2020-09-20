@@ -4,12 +4,39 @@ public class Huis {
     private Adres adres;
     private int aantalKamers;
     private int capaciteitKamer;
+    private int totaleCapaciteitHuis;
+    private Persoon[] personenInHuis;
 
     Huis(Adres adres, int aantalKamers)
     {
         this.adres = adres;
         this.aantalKamers = aantalKamers;
         capaciteitKamer = 2;
+        totaleCapaciteitHuis = aantalKamers * capaciteitKamer;
+        personenInHuis = new Persoon[totaleCapaciteitHuis];
+    }
+
+    void persoonToevoegenAanHuis(Persoon persoon){
+        //doe checks? Misschien boa checks hier al; en check of pleck in huis
+
+        if((telAantalPersonenInHuis() < totaleCapaciteitHuis))
+        {
+                //Bijv als 1 persoon in huis komt nieuwe persoon op de 2e plek oftewel op index 1
+                personenInHuis[telAantalPersonenInHuis()] = persoon;
+        }
+
+    }
+
+    int telAantalPersonenInHuis(){
+        int aantalPersonenInHuis = 0;
+        for(Persoon persoon : personenInHuis)
+        {
+            if(!(persoon == null))
+            {
+                aantalPersonenInHuis = aantalPersonenInHuis + 1;
+            }
+        }
+        return aantalPersonenInHuis;
     }
 
 }
