@@ -8,10 +8,23 @@ public class HuizenTests {
 
 
     @Test
-    void mainTest()
+    void mainTestGenoegWoonruimte()
     {
         Huis[] arrayVanHuizen = maakEenArrayVanHuizenVoorTesten();
         Persoon[] arrayVanPersonen = maakEenArrayVanPersonenVoorTesten();
+        voegPersonenToeAanHuizenVolgensCoronaMaatregelen(arrayVanHuizen, arrayVanPersonen);
+    }
+
+    @Test
+    void mainTestTeWeinigWoonruimte()
+    {
+        Huis[] arrayVanHuizen = maakEenArrayVanHuizenVoorTesten();
+        Persoon[] arrayVanPersonen = maakEenArrayVanTeVeelPersonenVoorTesten();
+        voegPersonenToeAanHuizenVolgensCoronaMaatregelen(arrayVanHuizen, arrayVanPersonen);
+    }
+
+    void voegPersonenToeAanHuizenVolgensCoronaMaatregelen(Huis[] arrayVanHuizen, Persoon[] arrayVanPersonen)
+    {
         BoaControllor boaControllor = new BoaControllor();
 
         int huidigeHuisIndex = 0;
@@ -21,8 +34,11 @@ public class HuizenTests {
 
         while((boaControllor.getErIsNogCoronaveiligeWoonruimteVrij() == true) && (aantalPersonenZonderWoonruimte > 0))
         {
+            //check of er nog mensen zijn zonder woonruimte
+            aantalPersonenZonderWoonruimte = telAantalPersonenInArrayZonderWoonruimte(arrayVanPersonen);
+
             //Zijn er mensen zonder woonruimte en is er corona veilig plek, voeg dan toe. Hou aantal pogingen per persoon bij
-            boolean persoonSuccesvolToegevoegd = voegEenPersoonToeAanEenHuis(arrayVanPersonen[huidigePersonenIndex],arrayVanHuizen[huidigeHuisIndex] ,boaControllor);
+            boolean persoonSuccesvolToegevoegd = voegEenPersoonToeAanEenHuis(arrayVanPersonen[huidigePersonenIndex], arrayVanHuizen[huidigeHuisIndex], boaControllor);
             aantalPogingenToevoegenVanEenPersoon = aantalPogingenToevoegenVanEenPersoon + 1;
 
             //als succesvol toegevoegd, verhoog persoonsindex zodat de volgende ronde van de while loop deze kan worden toegevoegd
@@ -30,6 +46,8 @@ public class HuizenTests {
             if(persoonSuccesvolToegevoegd == true)
             {
                 huidigePersonenIndex = geefVolgendePersonenIndex(huidigePersonenIndex, arrayVanPersonen);
+                huidigeHuisIndex = 0;
+                aantalPogingenToevoegenVanEenPersoon = 0;
             }
             else
             {
@@ -41,10 +59,6 @@ public class HuizenTests {
                     boaControllor.setErIsNogCoronaveiligeWoonruimteVrij(false);
                 }
             }
-
-            //check of er nog mensen zijn zonder woonruimte
-            aantalPersonenZonderWoonruimte = telAantalPersonenInArrayZonderWoonruimte(arrayVanPersonen);
-
         }
         //Als while loop stopt zijn er of geen personen meer zonder woonruimte, print dan lijst van namen per woning
         if(aantalPersonenZonderWoonruimte == 0)
@@ -62,6 +76,10 @@ public class HuizenTests {
 
             System.out.println("De volgende personen zijn nog zonder woonruimte:");
             printPersonenZonderWoonruimte(arrayVanPersonen);
+
+            System.out.println(" ");
+            System.out.println("De andere personen zijn als volgend verdeeld:");
+            printLijstVanHuizenMetNamenVanInwonenden(arrayVanHuizen);
         }
     }
 
@@ -99,9 +117,9 @@ public class HuizenTests {
     Huis[] maakEenArrayVanHuizenVoorTesten()
     {
         Adres adresHuis0 = new Adres("Amsterdam", "Zilverweg", 44, "Nederland");
-        Adres adresHuis1 = new Adres("Eindhoven", "Zegenstraat", 3, "Nederland");
+        Adres adresHuis1 = new Adres("Berlin", "Saga", 3, "Duitsland");
         Huis huis0 = new Huis(adresHuis0,3);
-        Huis huis1 = new Huis(adresHuis1, 4);
+        Huis huis1 = new Huis(adresHuis1, 3);
         Huis[] huizen = {huis0, huis1};
         return huizen;
     }
@@ -111,7 +129,34 @@ public class HuizenTests {
     {
         Persoon persoon0 = new Persoon("Cihangir", 18);
         Persoon persoon1 = new Persoon("Mike", 27);
-        Persoon[] personen = {persoon0, persoon1};
+        Persoon persoon2 = new Persoon("Hennie", 99);
+        Persoon persoon3 = new Persoon("Hans", 88);
+        Persoon persoon4 = new Persoon("Halve", 77);
+        Persoon persoon5 = new Persoon("Hextra", 66);
+        Persoon persoon6 = new Persoon("Hema", 55);
+        Persoon persoon7 = new Persoon("Helaas", 44);
+        Persoon persoon8 = new Persoon("Handy", 33);
+        Persoon[] personen = {persoon0, persoon1, persoon2, persoon3, persoon4, persoon5, persoon6, persoon7, persoon8};
+        return personen;
+    }
+
+    Persoon[] maakEenArrayVanTeVeelPersonenVoorTesten()
+    {
+        Persoon persoon0 = new Persoon("Cihangir", 18);
+        Persoon persoon1 = new Persoon("Mike", 27);
+        Persoon persoon2 = new Persoon("Hennie", 99);
+        Persoon persoon3 = new Persoon("Hans", 88);
+        Persoon persoon4 = new Persoon("Halve", 77);
+        Persoon persoon5 = new Persoon("Hextra", 66);
+        Persoon persoon6 = new Persoon("Hema", 55);
+        Persoon persoon7 = new Persoon("Helaas", 44);
+        Persoon persoon8 = new Persoon("Handy", 33);
+        Persoon persoon9 = new Persoon("Hesse", 11);
+        Persoon persoon10 = new Persoon("Hanna", 22);
+        Persoon persoon11 = new Persoon("Hely", 35);
+        Persoon persoon12 = new Persoon("Honas", 56);
+        Persoon persoon13 = new Persoon("Hrandy", 74);
+        Persoon[] personen = {persoon0, persoon1, persoon2, persoon3, persoon4, persoon5, persoon6, persoon7, persoon8, persoon9, persoon10, persoon11, persoon12, persoon13};
         return personen;
     }
 
@@ -151,7 +196,7 @@ public class HuizenTests {
 
     int geefVolgendePersonenIndex(int huidigePersonenIndex, Persoon[] arrayVanPersonen)
     {
-        if(huidigePersonenIndex < arrayVanPersonen.length)
+        if(huidigePersonenIndex < (arrayVanPersonen.length - 1))
         {
             huidigePersonenIndex = huidigePersonenIndex + 1;
         }
@@ -164,7 +209,7 @@ public class HuizenTests {
 
     int geefVolgendeHuizenIndex(int huidigeHuizenIndex, Huis[] arrayVanHuizen)
     {
-        if(huidigeHuizenIndex < arrayVanHuizen.length)
+        if(huidigeHuizenIndex < (arrayVanHuizen.length - 1))
         {
             huidigeHuizenIndex = huidigeHuizenIndex + 1;
         }
@@ -174,5 +219,6 @@ public class HuizenTests {
         }
         return huidigeHuizenIndex;
     }
+
 
 }
