@@ -2,19 +2,36 @@ package org.example.mike.HuizenHuiswerk;
 
 public class BoaControllor {
     private int maxCapaciteitHuisVolgensCoronaRegels;
-    //onbetrouwbaarheid boa
+    private boolean erIsNogCoronaveiligeWoonruimteVrij;
 
     BoaControllor()
     {
         maxCapaciteitHuisVolgensCoronaRegels = 6;
+        erIsNogCoronaveiligeWoonruimteVrij = true;
+    }
 
-        //voeg 20 prozent kans op een random onbetrouwbaarheid toe
+    int getMaxCapaciteitHuisVolgensCoronaRegels() {
+        return maxCapaciteitHuisVolgensCoronaRegels;
+    }
+
+    void setMaxCapaciteitHuisVolgensCoronaRegels(int maxCapaciteitHuisVolgensCoronaRegels) {
+        this.maxCapaciteitHuisVolgensCoronaRegels = maxCapaciteitHuisVolgensCoronaRegels;
+    }
+
+    boolean getErIsNogCoronaveiligeWoonruimteVrij()
+    {
+        return erIsNogCoronaveiligeWoonruimteVrij;
+    }
+
+    void setErIsNogCoronaveiligeWoonruimteVrij(boolean erIsNogCoronaveiligeWoonruimteVrij)
+    {
+        this.erIsNogCoronaveiligeWoonruimteVrij = erIsNogCoronaveiligeWoonruimteVrij;
     }
 
     boolean checkDeCoronaRegelsOfToevoegenMag(Huis huis)
     {
         boolean persoonToevoegenMag = false;
-        if(huis.telAantalPersonenInHuis() < maxCapaciteitHuisVolgensCoronaRegels) //+onbetrouwbaarheid)
+        if(huis.telAantalPersonenInHuis() < maxCapaciteitHuisVolgensCoronaRegels)
         {
             persoonToevoegenMag = true;
         }

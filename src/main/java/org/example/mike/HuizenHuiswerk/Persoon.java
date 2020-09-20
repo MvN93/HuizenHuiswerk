@@ -34,5 +34,7 @@ public class Persoon {
     {
         leeftijd = newLeeftijd;
     }
+
+    void setHeeftWoonruimte(boolean newHeeftWoonruimte) { heeftWoonruimte = newHeeftWoonruimte;}
 }
 
