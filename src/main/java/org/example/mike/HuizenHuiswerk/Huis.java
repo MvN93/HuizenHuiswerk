@@ -26,6 +26,10 @@ public class Huis {
 
     }
 
+    int getTotaleCapaciteitHuis() {
+        return totaleCapaciteitHuis;
+    }
+
     void printLijstjeVanAlleInwonenden()
     {
         for(Persoon persoon : personenInHuis)

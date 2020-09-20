@@ -94,6 +94,10 @@ public class HuizenTests {
             persoonSuccesvolToegevoegd = true;
             return persoonSuccesvolToegevoegd;
         }
+        else if(huis.telAantalPersonenInHuis() == huis.getTotaleCapaciteitHuis()) //als totale capaciteit huis bereikt is return dat niet succesvol is toegevoegd
+        {
+            return persoonSuccesvolToegevoegd;
+        }
         else
         {
             //laat boa checken of in dit huis nog mag met corona, als ja voeg toe, anders return false
