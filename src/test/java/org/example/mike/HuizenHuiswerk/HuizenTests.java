@@ -112,11 +112,6 @@ public class HuizenTests {
         }
     }
 
-    void probeerEenAnderHuisTeVinden(Persoon persoon, int huidigeHuisIndex)
-    {
-       // voegEenPersoonToeAanEenHuis(persoon, );
-    }
-
 
     Huis[] maakEenArrayVanHuizenVoorTesten()
     {
