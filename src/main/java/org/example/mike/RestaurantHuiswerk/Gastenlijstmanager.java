@@ -15,7 +15,7 @@ public class Gastenlijstmanager {
     }
 
     String toStringRepresentation(){
-        return "" + maxCapaciteitGastenlijst + foutmarge + coronaregelsMaximaleCapaciteit;
+        return "Max capaciteit: " + maxCapaciteitGastenlijst + "; foutmarge: " + foutmarge;
     }
 
     void voegPersoonToeAanGastenlijst(Persoon persoon){
@@ -30,6 +30,10 @@ public class Gastenlijstmanager {
 
     void haalPersoonUitGastenlijst(Persoon persoon){
         gastenlijst.schrijfPersoonUitGastenlijst(persoon);
+    }
+
+    void printGastenlijst(){
+        this.gastenlijst.print();
     }
 
     void maakFoutmargeAan() {

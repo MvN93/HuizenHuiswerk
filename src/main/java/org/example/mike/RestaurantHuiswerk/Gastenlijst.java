@@ -50,5 +50,10 @@ public class Gastenlijst {
         }
     }
 
+    void print(){
+        for(Persoon persoon : gastenlijst){
+            System.out.println(persoon.getNaam());
+        }
+    }
 
 }

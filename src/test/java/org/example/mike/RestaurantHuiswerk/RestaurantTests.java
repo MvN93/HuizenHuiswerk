@@ -6,35 +6,23 @@ public class RestaurantTests {
 
     @Test
     void test(){
-        //Restaurant restaurant = maakRestaurantAan();
         Adres adresRestaurant1 = new Adres("Zeestraat", 5, "Apeldoorn");
-
         BoaController boaController = new BoaController();
         Gastenlijstmanager gastenlijstmanager = new Gastenlijstmanager(12, boaController.getCoronaregelsMaximaleCapaciteit());
         Restaurant restaurant1 = new Restaurant(adresRestaurant1,"Zee", 12, boaController, gastenlijstmanager);
-        printLijstVanRestaurant(restaurant1);
+
+        printLijstVanRestaurant(restaurant1, gastenlijstmanager);
 
         Persoon[] arrayPersonen = maakEenArrayVanPersonen();
-        //restaurant.gastenlijstmanager.toStringRepresentation();
-        /*
         for(Persoon persoon : arrayPersonen)
         {
-            restaurant.gastenlijstmanager.voegPersoonToeAanGastenlijst(persoon);
+            gastenlijstmanager.voegPersoonToeAanGastenlijst(persoon);
         }
-        */
+
 
     }
 
 
-    Restaurant maakRestaurantAan(){
-        Adres adresRestaurant1 = new Adres("Zeestraat", 5, "Apeldoorn");
-
-        BoaController boaController = new BoaController();
-        Gastenlijstmanager gastenlijstmanager = new Gastenlijstmanager(12, boaController.getCoronaregelsMaximaleCapaciteit());
-        Restaurant restaurant1 = new Restaurant(adresRestaurant1,"Zee", 12, boaController, gastenlijstmanager);
-
-        return restaurant1;
-    }
 
     Persoon[] maakEenArrayVanPersonen()
     {
@@ -62,9 +50,10 @@ public class RestaurantTests {
         return personen;
     }
 
-    void printLijstVanRestaurant(Restaurant restaurant)
+    void printLijstVanRestaurant(Restaurant restaurant, Gastenlijstmanager gastenlijstmanager)
     {
         System.out.println(restaurant.toStringRepresentation());
+        System.out.println(gastenlijstmanager.toStringRepresentation());
         System.out.println(" ");
     }
 }
