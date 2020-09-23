@@ -5,7 +5,6 @@ public class Persoon {
     private int leeftijd;
     private boolean heeftWoonruimte;
 
-
     Persoon(String naam, int leeftijd)
     {
         this.naam = naam;

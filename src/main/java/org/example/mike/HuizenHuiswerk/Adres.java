@@ -14,6 +14,22 @@ public class Adres {
         this.land = land;
     }
 
+    public String getWoonplaats() {
+        return woonplaats;
+    }
+
+    public String getStraat() {
+        return straat;
+    }
+
+    public int getNummer() {
+        return nummer;
+    }
+
+    public String getLand() {
+        return land;
+    }
+
     String toStringRepresentation()
     {
         return "Straat: " + straat + " " + nummer + ", Plaats: " + woonplaats + ". " + land;

@@ -17,13 +17,10 @@ public class Huis {
     }
 
     void persoonToevoegenAanHuis(Persoon persoon){
-        //doe checks? Misschien boa checks hier al; en check of pleck in huis
-
         if((telAantalPersonenInHuis() < totaleCapaciteitHuis)) {
             //Bijv als 1 persoon in huis komt nieuwe persoon op de 2e plek oftewel op index 1
             personenInHuis[telAantalPersonenInHuis()] = persoon;
         }
-
     }
 
     int getTotaleCapaciteitHuis() {

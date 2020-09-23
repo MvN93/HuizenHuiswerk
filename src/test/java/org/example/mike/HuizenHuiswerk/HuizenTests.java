@@ -117,7 +117,7 @@ public class HuizenTests {
     {
         Adres adresHuis0 = new Adres("Amsterdam", "Zilverweg", 44, "Nederland");
         Adres adresHuis1 = new Adres("Berlin", "Saga", 3, "Duitsland");
-        Huis huis0 = new Huis(adresHuis0,3);
+        Huis huis0 = new Huis(adresHuis0,1);
         Huis huis1 = new Huis(adresHuis1, 3);
         Huis[] huizen = {huis0, huis1};
         return huizen;
