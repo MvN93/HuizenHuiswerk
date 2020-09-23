@@ -14,7 +14,7 @@ public class Adres {
 
     String toStringRepresentation()
     {
-        return "Straat: " + straat + " " + huisnummer ", Plaats: " + plaats + ".";
+        return straat + " " + huisnummer + ", " + plaats + ".";
     }
 
     //setters and getters

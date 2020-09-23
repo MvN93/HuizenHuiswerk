@@ -45,6 +45,9 @@ public class Gastenlijst {
             }
             return index;
         }
+        else{
+            return 0;
+        }
     }
 
 

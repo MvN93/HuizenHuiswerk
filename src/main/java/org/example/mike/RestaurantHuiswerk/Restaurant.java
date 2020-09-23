@@ -3,52 +3,64 @@ package org.example.mike.RestaurantHuiswerk;
 
 
 public class Restaurant {
-    private Gastenlijstmanager gastenlijstmanager;
+    Gastenlijstmanager gastenlijstmanager;
     private Adres adres;
     private String naamRestaurant;
     private int totaleCapaciteitRestaurant;
     private BoaController boaController;
 
-    Restaurant(Adres adres, String naamRestaurant, int totaleCapaciteitRestaurant)
+    Restaurant(Adres adres, String naamRestaurant, int totaleCapaciteitRestaurant, BoaController boaController, Gastenlijstmanager gastenlijstmanager)
     {
         setAdres(adres);
         setNaamRestaurant(naamRestaurant);
         setTotaleCapaciteitRestaurant(totaleCapaciteitRestaurant);
-        Gastenlijstmanager gastenlijstmanager = new Gastenlijstmanager(totaleCapaciteitRestaurant, boaController.getCoronaregelsMaximaleCapaciteit());
+        setBoaController(boaController);
+        setGastenlijstmanager(gastenlijstmanager);
     }
 
 
 
+    String toStringRepresentation(){
+        return "Restaurant: " + naamRestaurant + "; " + adres.toStringRepresentation() ;
+    }
+
     //getters and setters
-    public Gastenlijstmanager getGastenlijstmanager() {
+    BoaController getBoaController() {
+        return this.boaController;
+    }
+    void setBoaController(BoaController boaController) {
+        this.boaController = boaController;
+    }
+
+     Gastenlijstmanager getGastenlijstmanager() {
         return gastenlijstmanager;
     }
 
-    public void setGastenlijstmanager(Gastenlijstmanager gastenlijstmanager) {
+     void setGastenlijstmanager(Gastenlijstmanager gastenlijstmanager) {
         this.gastenlijstmanager = gastenlijstmanager;
     }
 
-    public Adres getAdres() {
+     Adres getAdres() {
         return adres;
     }
 
-    public void setAdres(Adres adres) {
+     void setAdres(Adres adres) {
         this.adres = adres;
     }
 
-    public String getNaamRestaurant() {
+     String getNaamRestaurant() {
         return naamRestaurant;
     }
 
-    public void setNaamRestaurant(String naamRestaurant) {
+     void setNaamRestaurant(String naamRestaurant) {
         this.naamRestaurant = naamRestaurant;
     }
 
-    public int getTotaleCapaciteitRestaurant() {
+     int getTotaleCapaciteitRestaurant() {
         return totaleCapaciteitRestaurant;
     }
 
-    public void setTotaleCapaciteitRestaurant(int totaleCapaciteitRestaurant) {
+     void setTotaleCapaciteitRestaurant(int totaleCapaciteitRestaurant) {
         this.totaleCapaciteitRestaurant = totaleCapaciteitRestaurant;
     }
 }

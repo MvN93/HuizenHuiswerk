@@ -14,6 +14,10 @@ public class Gastenlijstmanager {
         this.coronaregelsMaximaleCapaciteit = coronaregelsMaximaleCapaciteit;
     }
 
+    String toStringRepresentation(){
+        return "" + maxCapaciteitGastenlijst + foutmarge + coronaregelsMaximaleCapaciteit;
+    }
+
     void voegPersoonToeAanGastenlijst(Persoon persoon){
         if(gastenlijst.telAantalPersonenOpGastenlijst() < (coronaregelsMaximaleCapaciteit + foutmarge))
         {

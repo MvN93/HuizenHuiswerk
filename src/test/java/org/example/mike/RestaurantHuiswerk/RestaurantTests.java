@@ -6,24 +6,65 @@ public class RestaurantTests {
 
     @Test
     void test(){
-        Restaurant[] restaurants = maakRestaurantsAan();
+        //Restaurant restaurant = maakRestaurantAan();
+        Adres adresRestaurant1 = new Adres("Zeestraat", 5, "Apeldoorn");
+
+        BoaController boaController = new BoaController();
+        Gastenlijstmanager gastenlijstmanager = new Gastenlijstmanager(12, boaController.getCoronaregelsMaximaleCapaciteit());
+        Restaurant restaurant1 = new Restaurant(adresRestaurant1,"Zee", 12, boaController, gastenlijstmanager);
+        printLijstVanRestaurant(restaurant1);
+
+        Persoon[] arrayPersonen = maakEenArrayVanPersonen();
+        //restaurant.gastenlijstmanager.toStringRepresentation();
+        /*
+        for(Persoon persoon : arrayPersonen)
+        {
+            restaurant.gastenlijstmanager.voegPersoonToeAanGastenlijst(persoon);
+        }
+        */
+
     }
 
-    @Test
-    Restaurant[] maakRestaurantsAan(){
+
+    Restaurant maakRestaurantAan(){
         Adres adresRestaurant1 = new Adres("Zeestraat", 5, "Apeldoorn");
-        Adres adresRestaurant2 = new Adres("Zabstraat", 2, "Amsterdam");
-        Adres adresRestaurant3 = new Adres("Steenworp", 52, "Utrecht");
-        Adres adresRestaurant4 = new Adres("Uver", 21, "Bergen");
-        Adres adresRestaurant5 = new Adres("Kabeldreef", 33, "Almere");
 
-        Restaurant restaurant1 = new Restaurant(adresRestaurant1,"Zee", 12);
-        Restaurant restaurant2 = new Restaurant(adresRestaurant1,"Zab", 11);
-        Restaurant restaurant3 = new Restaurant(adresRestaurant1,"Steen", 15);
-        Restaurant restaurant4 = new Restaurant(adresRestaurant1,"Uver", 22);
-        Restaurant restaurant5 = new Restaurant(adresRestaurant1,"Kabel", 33);
+        BoaController boaController = new BoaController();
+        Gastenlijstmanager gastenlijstmanager = new Gastenlijstmanager(12, boaController.getCoronaregelsMaximaleCapaciteit());
+        Restaurant restaurant1 = new Restaurant(adresRestaurant1,"Zee", 12, boaController, gastenlijstmanager);
 
-        Restaurant[] restaurants = {restaurant1, restaurant2, restaurant3, restaurant4, restaurant5};
-        return restaurants;
+        return restaurant1;
+    }
+
+    Persoon[] maakEenArrayVanPersonen()
+    {
+        Persoon persoon1 = new Persoon("Cihangir");
+        Persoon persoon2 = new Persoon("Mike");
+        Persoon persoon3 = new Persoon("Herd");
+        Persoon persoon4 = new Persoon("Haast");
+        Persoon persoon5 = new Persoon("Hela");
+        Persoon persoon6 = new Persoon("Hir");
+        Persoon persoon7 = new Persoon("Hanni");
+        Persoon persoon8 = new Persoon("Hana");
+        Persoon persoon9 = new Persoon("Help");
+        Persoon persoon10 = new Persoon("Sjon");
+        Persoon persoon11 = new Persoon("Sara");
+        Persoon persoon12 = new Persoon("Son");
+        Persoon persoon13 = new Persoon("Sana");
+        Persoon persoon14 = new Persoon("Raga");
+        Persoon persoon15 = new Persoon("Ree");
+        Persoon persoon16 = new Persoon("Rehen");
+        Persoon persoon17 = new Persoon("Rada");
+        Persoon persoon18 = new Persoon("Tri");
+        Persoon persoon19 = new Persoon("Troom");
+        Persoon persoon20 = new Persoon("Tal");
+        Persoon[] personen = {persoon1, persoon2, persoon3, persoon4, persoon5, persoon6, persoon7, persoon8, persoon9, persoon10, persoon11, persoon12, persoon13, persoon14, persoon15, persoon16, persoon17, persoon18, persoon19, persoon20};
+        return personen;
+    }
+
+    void printLijstVanRestaurant(Restaurant restaurant)
+    {
+        System.out.println(restaurant.toStringRepresentation());
+        System.out.println(" ");
     }
 }
