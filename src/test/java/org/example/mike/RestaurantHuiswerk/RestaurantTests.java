@@ -19,6 +19,12 @@ public class RestaurantTests {
             gastenlijstmanager.voegPersoonToeAanGastenlijst(persoon);
         }
 
+        System.out.println("");
+
+        printGastenlijst(gastenlijstmanager);
+
+        System.out.println("");
+        boaController.toetsCoronaregels(gastenlijstmanager);
 
     }
 
@@ -55,5 +61,16 @@ public class RestaurantTests {
         System.out.println(restaurant.toStringRepresentation());
         System.out.println(gastenlijstmanager.toStringRepresentation());
         System.out.println(" ");
+    }
+
+    void printGastenlijst(Gastenlijstmanager gastenlijstmanager)
+    {
+        Gastenlijst gastenlijst = gastenlijstmanager.getGastenlijst();
+        Persoon[] gastenlijstPersonen = gastenlijst.getGastenlijst();
+        for(Persoon persoon : gastenlijstPersonen) {
+            if(!(persoon == null)){
+                System.out.println(persoon.getNaam());
+            }
+        }
     }
 }

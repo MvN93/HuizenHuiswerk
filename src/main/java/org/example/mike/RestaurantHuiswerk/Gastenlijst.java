@@ -56,4 +56,8 @@ public class Gastenlijst {
         }
     }
 
+    //getter
+    public Persoon[] getGastenlijst() {
+        return gastenlijst;
+    }
 }

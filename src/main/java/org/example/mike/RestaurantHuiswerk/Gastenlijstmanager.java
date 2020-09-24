@@ -19,7 +19,7 @@ public class Gastenlijstmanager {
     }
 
     void voegPersoonToeAanGastenlijst(Persoon persoon){
-        if(gastenlijst.telAantalPersonenOpGastenlijst() < (coronaregelsMaximaleCapaciteit + foutmarge))
+        if((gastenlijst.telAantalPersonenOpGastenlijst() < (coronaregelsMaximaleCapaciteit + foutmarge)) && (gastenlijst.telAantalPersonenOpGastenlijst() < (maxCapaciteitGastenlijst)))
         {
             gastenlijst.schrijfPersoonInGastenlijst(persoon);
         }
@@ -56,6 +56,14 @@ public class Gastenlijstmanager {
     }
 
     //getters and setters
+     Gastenlijst getGastenlijst() {
+        return gastenlijst;
+    }
+
+     void setGastenlijst(Gastenlijst gastenlijst) {
+        this.gastenlijst = gastenlijst;
+    }
+
     void setMaxCapaciteitGastenlijst(int maxCapaciteitGastenlijst) {
         this.maxCapaciteitGastenlijst = maxCapaciteitGastenlijst;
     }
